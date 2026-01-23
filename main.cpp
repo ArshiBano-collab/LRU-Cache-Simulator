@@ -4,41 +4,42 @@
 using namespace std;
 class LRUCache {
     int capacity;
-    list<pair<int, int>> dll;
-    unordered_map<int, list<pair<int, int>>::iterator> mp;
+    list<pair<int, int>>cacheList;
+    unordered_map<int, list<pair<int, int>>::iterator>mpp;
 
 public:
     LRUCache(int cap) {
-        capacity = cap;
+           capacity = cap;
     }
+
 
     int get(int key) {
     
-       if (mp.find(key) == mp.end()) {
+       if (mpp.find(key) == mpp.end()) {
            return -1;
        }
-       auto it = mp[key];
-       int value = it->second;
-       dll.erase(it);
-       dll.push_front({key, value});
-       mp[key] = dll.begin();
+       auto node = mpp[key];
+       int value = node->second;
+       cacheList.erase(node);
+       cacheList.push_front({key, value});
+       mpp[key] = cacheList.begin();
        return value;
     }
 
     void put(int key, int value) {
 
-          if (mp.find(key) != mp.end()) {
+          if (mpp.find(key) != mpp.end()) {
         
-                 dll.erase(mp[key]);
+                 cacheList.erase(mpp[key]);
           }
-          else if (dll.size() == capacity) {
+          else if (cacheList.size() == capacity) {
         
-                 auto last = dll.back();
-                 mp.erase(last.first);
-                 dll.pop_back();
+                 auto last = cacheList.back();
+                 mpp.erase(last.first);
+                 cacheList.pop_back();
           }
-          dll.push_front({key, value});
-          mp[key] = dll.begin();
+          cacheList.push_front({key, value});
+          mpp[key] = cacheList.begin();
     }
 };
 
@@ -50,20 +51,20 @@ int main() {
 
     LRUCache cache(capacity);
 
-    int q;
+    int n;
     cout << "Enter number of operations: ";
-    cin >> q;
+    cin >> n;
 
-    while (q--) {
-        string op;
-        cin >> op;
+    while (n--) {
+        string strs;
+        cin >> strs;
 
-        if (op == "put") {
+        if (strs == "put") {
             int key, value;
             cin >> key >> value;
             cache.put(key, value);
         }
-        else if (op == "get") {
+        else if (strs == "get") {
             int key;
             cin >> key;
             cout << cache.get(key) << endl;
