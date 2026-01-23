@@ -1,12 +1,15 @@
 # LRU Cache Simulator
 
-A C++ implementation of an LRU (Least Recently Used) Cache using STL.
+This project is a simple implementation of an LRU (Least Recently Used) Cache in C++ using STL.
+
+## Why this project
+I built this project to better understand how LRU caching works internally and how different data structures can be combined to achieve efficient performance.
 
 ## Features
 - O(1) time complexity for get and put operations
 - Implemented using unordered_map and doubly linked list (STL list)
-- Supports automatic eviction of least recently used elements
-- Demonstrates real-world caching behavior used in systems and backend services
+- Automatically removes the least recently used element when cache capacity is exceeded
+- Helps understand caching behavior used in real-world systems
 
 ## Technologies Used
 - C++
