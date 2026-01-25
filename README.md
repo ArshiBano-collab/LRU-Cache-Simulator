@@ -21,3 +21,9 @@ I built this project to better understand how LRU caching works internally and h
 ```bash
 g++ main.cpp -o lru
 ./lru
+
+
+Explanation:
+- Cache capacity is 2
+- After accessing key 1, it becomes most recently used
+- When key 3 is inserted, key 2 is evicted (least recently used)
