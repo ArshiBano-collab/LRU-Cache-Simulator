@@ -14,7 +14,7 @@ I built this project to better understand how LRU caching works internally and h
 ## Technologies Used
 - C++
 - STL (unordered_map, list)
-- Object-Oriented Programming
+- Object Oriented Programming
 - Data Structures & Algorithms
 
 ## How to Run
