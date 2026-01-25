@@ -8,6 +8,6 @@ get 1
 put 3 30
 get 2
 
-Expected Output:
+Output:
 10
 -1
