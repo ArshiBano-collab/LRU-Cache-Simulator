@@ -52,7 +52,7 @@ int main() {
     LRUCache cache(capacity);
 
     int n;
-    cout << "Enter number of operations:";
+    cout << "Enter number of operations: ";
     cin >> n;
 
     while (n--) {
