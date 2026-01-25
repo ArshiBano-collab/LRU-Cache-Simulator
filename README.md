@@ -1,4 +1,4 @@
-# LRU Cache Simulator
+## LRU Cache Simulator
 
 This project is a simple implementation of an LRU (Least Recently Used) Cache in C++ using STL.
 
@@ -23,7 +23,7 @@ g++ main.cpp -o lru
 ./lru
 
 
-Explanation:
+## Explanation:
 - Cache capacity is 2
 - After accessing key 1, it becomes most recently used
 - When key 3 is inserted, key 2 is evicted (least recently used)
