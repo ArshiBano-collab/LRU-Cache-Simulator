@@ -46,7 +46,7 @@ public:
 
 int main() {
     int capacity;
-    cout << "Enter cache capacity:";
+    cout << "Enter cache capacity: ";
     cin >> capacity;
 
     LRUCache cache(capacity);
