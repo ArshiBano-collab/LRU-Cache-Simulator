@@ -1,71 +1,75 @@
-#include <iostream>
-#include <unordered_map>
-#include <list>
+#include <bits/stdc++.h>
 using namespace std;
+
 class LRUCache {
-    int capacity;
-    list<pair<int, int>>cacheList;
-    unordered_map<int, list<pair<int, int>>::iterator>mpp;
+    int cap;
+    list<pair<int, int>> cacheList;
+    unordered_map<int, list<pair<int, int>>::iterator> mpp;
 
 public:
-    LRUCache(int cap) {
-           capacity = cap;
+    LRUCache(int cap1) {
+        cap = cap1;
     }
-
 
     int get(int key) {
-    
-       if (mpp.find(key) == mpp.end()) {
-           return -1;
-       }
-       auto node = mpp[key];
-       int value = node->second;
-       cacheList.erase(node);
-       cacheList.push_front({key, value});
-       mpp[key] = cacheList.begin();
-       return value;
+        if (mpp.find(key) == mpp.end()) {
+            return -1;
+        }
+
+        auto node = mpp[key];
+        int val = node->second;
+
+      
+        cacheList.erase(node);
+        cacheList.push_front({key, val});
+        mpp[key] = cacheList.begin();
+
+        return val;
     }
 
-    void put(int key, int value) {
+    void put(int key, int val) {
+        
+        if (mpp.find(key) != mpp.end()) {
+            cacheList.erase(mpp[key]);
+        }
+       
+        else if (cacheList.size() == cap) {
+            auto last = cacheList.back();
+            mpp.erase(last.first);
+            cacheList.pop_back();
+        }
 
-          if (mpp.find(key) != mpp.end()) {
         
-                 cacheList.erase(mpp[key]);
-          }
-          else if (cacheList.size() == capacity) {
-        
-                 auto last = cacheList.back();
-                 mpp.erase(last.first);
-                 cacheList.pop_back();
-          }
-          cacheList.push_front({key, value});
-          mpp[key] = cacheList.begin();
+        cacheList.push_front({key, val});
+        mpp[key] = cacheList.begin();
     }
 };
 
-
 int main() {
-    int capacity;
-    cout << "Enter cache capacity: ";
-    cin >> capacity;
+    int cap;
+    cout << "Enter the cache capacity you want: ";
+    cin >> cap;
 
-    LRUCache cache(capacity);
+    LRUCache cache(cap);
 
     int n;
-    cout << "Enter number of operations: ";
+    cout << "Enter total number of operations you want to do: ";
     cin >> n;
 
     while (n--) {
-        string strs;
-        cin >> strs;
+        cout <<" enter the operation type : "<<endl;
+        string op;
+        cin >> op;
 
-        if (strs == "put") {
-            int key, value;
-            cin >> key >> value;
-            cache.put(key, value);
-        }
-        else if (strs == "get") {
+        if (op == "put") {
+            int key, val;
+            cout<< "enter key and value "<<endl;
+            cin >> key >> val;
+            cache.put(key, val);
+        } 
+        else if (op == "get") {
             int key;
+            cout<<"  enter the key u want to get "<<endl;
             cin >> key;
             cout << cache.get(key) << endl;
         }
@@ -73,4 +77,3 @@ int main() {
 
     return 0;
 }
-

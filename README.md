@@ -17,13 +17,11 @@ I built this project to better understand how LRU caching works internally and h
 - Object Oriented Programming
 - Data Structures & Algorithms
 
-## How to Run
-```bash
-g++ main.cpp -o lru
-./lru
+## How to Run the Project
+Compile the program: g++ main.cpp -o lru
+
+Run the executable: .\lru.exe  
 
 
-## Explanation:
-- Cache capacity is 2
-- After accessing key 1, it becomes most recently used
-- When key 3 is inserted, key 2 is evicted (least recently used)
+
+

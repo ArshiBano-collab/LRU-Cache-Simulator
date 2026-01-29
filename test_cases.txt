@@ -2,13 +2,15 @@ Test Case 1:
 
 Capacity: 2
 Operations: 5
+
 put 1 10
 put 2 20
 get 1
 put 3 30
 get 2
 
-Output:
+Expected Output:
 10
 -1
+
 
